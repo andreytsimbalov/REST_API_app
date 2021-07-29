@@ -20,20 +20,51 @@ def hello_world():
     return 'REST API'
 
 @app.route('/cars', methods=['POST', 'GET'])
-def getPostCar():
+def carGetPost():
     if request.method == 'POST':
         print('($1, $2)')
         json_f = request.get_json()
         print(json_f)
         return resp(200, db.car.insertOne(json_f))
         # return resp(200, {"cars": db.car.selectAll()})
-    else:
+    elif request.method == 'GET':
         print("GET cars")
         return resp(200, {"cars": db.car.selectAll()})
 
-@app.route('/cars/<int:cars_id>')
-def getCarOne(cars_id):
-    return resp(200, db.car.selectOne(cars_id))
+@app.route('/cars/<int:cars_id>', methods=['PUT', 'GET', 'DELETE'])
+def carOneGetPutDelete(cars_id):
+    if request.method == 'GET':
+        return resp(200, db.car.selectOne(cars_id))
+    elif request.method == 'PUT':
+        json_f = request.get_json()
+        return resp(200, db.car.updateOne(json_f, cars_id))
+    elif request.method == 'DELETE':
+        return resp(200, db.car.deleteOne(cars_id))
+
+
+
+@app.route('/dealers', methods=['POST', 'GET'])
+def dealerGetPost():
+    if request.method == 'POST':
+        print('($1, $2)')
+        json_f = request.get_json()
+        print(json_f)
+        return resp(200, db.dealer.insertOne(json_f))
+        # return resp(200, {"cars": db.car.selectAll()})
+    elif request.method == 'GET':
+        print("GET cars")
+        return resp(200, {"cars": db.dealer.selectAll()})
+
+@app.route('/dealers/<int:dealers_id>', methods=['PUT', 'GET', 'DELETE'])
+def dealerOneGetPutDelete(dealers_id):
+    if request.method == 'GET':
+        return resp(200, db.dealer.selectOne(dealers_id))
+    elif request.method == 'PUT':
+        json_f = request.get_json()
+        return resp(200, db.dealer.updateOne(json_f, dealers_id))
+    elif request.method == 'DELETE':
+        return resp(200, db.dealer.deleteOne(dealers_id))
+
 
 if __name__ == '__main__':
     app.run()

@@ -60,13 +60,12 @@ class Car():
                          (json_data['dealer_id'], json_data['name']))
         self.cur.execute("SELECT LAST_INSERT_ID()")
         self.connection.commit()
-        # print(self.cur.fetchone()[0])
         tuples = self.selectOne(self.cur.fetchone()[0])
-        # tuples={}
         return tuples
 
     def updateOne(self, json_data, id):
-        self.cur.execute("UPDATE car SET dealer_id = %s, name = %s WHERE id = %s", (json_data['dealer_id'], json_data['name'], id))
+        self.cur.execute("UPDATE car SET dealer_id = %s, name = %s WHERE id = %s",
+                         (json_data['dealer_id'], json_data['name'], id))
         self.connection.commit()
         tuples = self.selectOne(id)
         return tuples
