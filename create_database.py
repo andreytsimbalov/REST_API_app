@@ -27,16 +27,7 @@ if __name__ == "__main__":
     connection.close()
 
     connection.connect(database=sql_data['database'])
-    # connection = mysql_conn.connect(
-    #     user=sql_data['user'],
-    #     password=sql_data['password'],
-    #     host=sql_data['host'],
-    #     port=sql_data['port'],
-    #     database=sql_data['database']
-    # )
     cur = connection.cursor(buffered=True)
-
-
 
     command = ''
     for line in open("data/dump-dealer_car-202107301235.sql"):
@@ -47,4 +38,6 @@ if __name__ == "__main__":
         if command[-2] == ';':
             cur.execute(command)
             command = ''
+
+    print("Success tables created")
 

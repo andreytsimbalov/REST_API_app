@@ -22,11 +22,9 @@ def hello_world():
 @app.route('/cars', methods=['POST', 'GET'])
 def carGetPost():
     if request.method == 'POST':
-        print('($1, $2)')
         json_f = request.get_json()
-        print(json_f)
+        print("POST cars", json_f)
         return resp(200, db.car.insertOne(json_f))
-        # return resp(200, {"cars": db.car.selectAll()})
     elif request.method == 'GET':
         print("GET cars")
         return resp(200, {"cars": db.car.selectAll()})
@@ -34,11 +32,14 @@ def carGetPost():
 @app.route('/cars/<int:cars_id>', methods=['PUT', 'GET', 'DELETE'])
 def carOneGetPutDelete(cars_id):
     if request.method == 'GET':
+        print("GET car", cars_id)
         return resp(200, db.car.selectOne(cars_id))
     elif request.method == 'PUT':
         json_f = request.get_json()
+        print("PUT car", cars_id, json_f)
         return resp(200, db.car.updateOne(json_f, cars_id))
     elif request.method == 'DELETE':
+        print("DELETE car", cars_id)
         return resp(200, db.car.deleteOne(cars_id))
 
 
@@ -46,23 +47,24 @@ def carOneGetPutDelete(cars_id):
 @app.route('/dealers', methods=['POST', 'GET'])
 def dealerGetPost():
     if request.method == 'POST':
-        print('($1, $2)')
         json_f = request.get_json()
-        print(json_f)
+        print("POST dealers", json_f)
         return resp(200, db.dealer.insertOne(json_f))
-        # return resp(200, {"cars": db.car.selectAll()})
     elif request.method == 'GET':
-        print("GET cars")
+        print("GET dealers")
         return resp(200, {"cars": db.dealer.selectAll()})
 
 @app.route('/dealers/<int:dealers_id>', methods=['PUT', 'GET', 'DELETE'])
 def dealerOneGetPutDelete(dealers_id):
     if request.method == 'GET':
+        print("GET dealer", dealers_id)
         return resp(200, db.dealer.selectOne(dealers_id))
     elif request.method == 'PUT':
         json_f = request.get_json()
+        print("PUT dealer", dealers_id, json_f)
         return resp(200, db.dealer.updateOne(json_f, dealers_id))
     elif request.method == 'DELETE':
+        print("DELETE dealer", dealers_id)
         return resp(200, db.dealer.deleteOne(dealers_id))
 
 
