@@ -27,12 +27,12 @@ dealer_json = {
     'name': 'dealer i_' + str(r.randint(0, 100))
 }
 
-# response = requests.get(url_dealers)
+response = requests.get(url_dealers)
 # response = requests.post(url_dealers, json = dealer_json)
 #
 # response = requests.get(url_dealers+'/1')
 # response = requests.put(url_dealers+'/19', json = dealer_json)
-response = requests.delete(url_dealers+'/19')
+# response = requests.delete(url_dealers+'/19')
 
 
 print(response)

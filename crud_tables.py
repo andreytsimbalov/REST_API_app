@@ -1,23 +1,9 @@
 import mysql.connector as mysql_conn
 import json
 
-# CREATE TABLE dealer_car.dealer (
-# # 	id INT auto_increment NOT NULL,
-# # 	name varchar(100) NULL,
-# # 	CONSTRAINT dealer_pk PRIMARY KEY (id)
-# # )
-
-# CREATE TABLE dealer_car.car (
-# 	id INT auto_increment NOT NULL,
-# 	dealer_id INT NOT NULL,
-# 	name varchar(100) NULL,
-# 	CONSTRAINT car_pk PRIMARY KEY (id),
-# 	CONSTRAINT car_FK FOREIGN KEY (dealer_id) REFERENCES dealer_car.dealer(id)
-# )
-
 class Database():
     def __init__(self):
-        with open('mysql_log_pas.json', 'r', encoding='utf-8') as f:
+        with open('data/mysql_log_pas.json', 'r', encoding='utf-8') as f:
             self.sql_data = json.load(f)
         self.connection = mysql_conn.connect(
             user=self.sql_data['user'],
