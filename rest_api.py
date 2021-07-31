@@ -52,7 +52,7 @@ def dealerGetPost():
         return resp(200, db.dealer.insertOne(json_f))
     elif request.method == 'GET':
         print("GET dealers")
-        return resp(200, {"cars": db.dealer.selectAll()})
+        return resp(200, {"dealers": db.dealer.selectAll()})
 
 @app.route('/dealers/<int:dealers_id>', methods=['PUT', 'GET', 'DELETE'])
 def dealerOneGetPutDelete(dealers_id):
