@@ -36,3 +36,20 @@ REST API с поддержкой CRUD операций.
 	PUT     /cars/1
 	DELETE  /cars/1
 
+Примеры Json для POST, PUT запросов:
+
+    car_json = {
+      'dealer_id': 1,
+      'name': 'car 1'
+    }
+
+
+    dealer_json = {
+      'name': 'dealer 1'
+    }
+	
+Пример запроса:
+
+    GET:  http://127.0.0.1:5000/dealers/3
+    
+    >> {"id": 3, "name": "Bob"}
