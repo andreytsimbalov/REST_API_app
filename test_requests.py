@@ -56,7 +56,7 @@ if __name__ == "__main__":
     print("test POST one")
     printResponses(requests.post(url_dealers, json=dealer_json))
 
-    last_post_id = requests.get(url_dealers).json()['cars'][-1]['id']
+    last_post_id = requests.get(url_dealers).json()['dealers'][-1]['id']
     print("Last POST id:", last_post_id)
     print()
 
