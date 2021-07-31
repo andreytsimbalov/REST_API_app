@@ -6,7 +6,7 @@ url_cars = "http://127.0.0.1:5000/cars"
 url_dealers = "http://127.0.0.1:5000/dealers"
 
 car_json = {
-    'dealer_id': r.randint(1, 5),
+    'dealer_id': r.randint(1, 4),
     'name': 'car i_' + str(r.randint(0, 100))
 }
 
